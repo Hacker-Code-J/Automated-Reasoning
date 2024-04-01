@@ -1,5 +1,31 @@
-\subsection{Introduction to Automated Theorem Proving}
+\iffalse
+\section{Introduction to Automated Theorem Proving}
 Automated Theorem Proving (ATP) is a critical area within automated reasoning that focuses on the development of computer programs capable of proving mathematical theorems automatically. ATP systems are designed to assist mathematicians, logicians, and computer scientists in validating the correctness of propositions and theorems without human intervention.
+\fi
+\begin{tcolorbox}[colframe=defcolor,title={\color{white}\bf Propositional Variable}]
+\begin{definition}
+A \textbf{propositional variable} is an input variable (that can either be true or false) of a truth function. Propositional variables are the \textit{basic building-blocks} of propositional formulas, used in propositional logic and higher-order logics.
+\end{definition}
+\end{tcolorbox}
+\begin{example}
+For a statement variable, a lowercase letter is usually used, for example:
+$p,q,r,\dots $, and so on
+or lowercase Greek letters, for example:
+$\phi, \psi, \chi, \dots$ and so on.
+\end{example}
+\begin{remark}
+The citing of a propositional variable can be interpreted as an assertion that the proposition represented by that symbol is true.
+That is:
+\begin{quote}
+"$p$" means "$p$ is true".
+\end{quote}
+\end{remark}
+
+\begin{tcolorbox}[colframe=defcolor,title={\color{white}\bf Propositional Function (Formula)}]
+	\begin{definition}
+		A \textbf{propositional variable} is an input variable (that can either be true or false) of a truth function. Propositional variables are the \textit{basic building-blocks} of propositional formulas, used in propositional logic and higher-order logics.
+	\end{definition}
+\end{tcolorbox}
 
 The boolean satisfiability problem (SAT) is the following: given a formula $F$ on propositional variables, does there exists an assignment $\mathcal{A}$ on theses variables, such that $\mathcal{A}(F)=1$.
 

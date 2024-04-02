@@ -2,6 +2,7 @@
 \section{Introduction to Automated Theorem Proving}
 Automated Theorem Proving (ATP) is a critical area within automated reasoning that focuses on the development of computer programs capable of proving mathematical theorems automatically. ATP systems are designed to assist mathematicians, logicians, and computer scientists in validating the correctness of propositions and theorems without human intervention.
 \fi
+\section{The Boolean Satisfiability Problem}
 \begin{tcolorbox}[colframe=defcolor,title={\color{white}\bf Propositional Variable}]
 \begin{definition}
 A \textbf{propositional variable} is an input variable (that can either be true or false) of a truth function. Propositional variables are the \textit{basic building-blocks} of propositional formulas, used in propositional logic and higher-order logics.
@@ -9,9 +10,9 @@ A \textbf{propositional variable} is an input variable (that can either be true 
 \end{tcolorbox}
 \begin{example}
 For a statement variable, a lowercase letter is usually used, for example:
-$p,q,r,\dots $, and so on
+$p,q,r,\dots$, and so on
 or lowercase Greek letters, for example:
-$\phi, \psi, \chi, \dots$ and so on.
+$\phi, \psi, \chi$ and so on.
 \end{example}
 \begin{remark}
 The citing of a propositional variable can be interpreted as an assertion that the proposition represented by that symbol is true.
@@ -22,9 +23,15 @@ That is:
 \end{remark}
 
 \begin{tcolorbox}[colframe=defcolor,title={\color{white}\bf Propositional Function (Formula)}]
-	\begin{definition}
-		A \textbf{propositional variable} is an input variable (that can either be true or false) of a truth function. Propositional variables are the \textit{basic building-blocks} of propositional formulas, used in propositional logic and higher-order logics.
-	\end{definition}
+\begin{definition}
+A \textbf{propositional function} (or \textbf{formula}) $P(x_1,x_2,\dots)$
+is an operation which acts on the objects denoted by the object variables (here, propositional variables) $x_1,x_2,\dots$
+in a particular universe to return a truth value which depends on:
+\begin{enumerate}[(1)]
+	\item The values of $x_1,x_2,\dots$
+	\item The nature of $P$.
+\end{enumerate}
+\end{definition}
 \end{tcolorbox}
 
 The boolean satisfiability problem (SAT) is the following: given a formula $F$ on propositional variables, does there exists an assignment $\mathcal{A}$ on theses variables, such that $\mathcal{A}(F)=1$.
@@ -32,3 +39,82 @@ The boolean satisfiability problem (SAT) is the following: given a formula $F$ o
 Given a formula $F$ over a set of propositional variables $\set{x_1,x_2,\dots,x_n}$, \[
 \exists\mathcal{A}:\set{x_1,x_2,\dots,x_n}\to\set{0,1}:\mathcal{A}(F)=1.
 \]
+
+\begin{tcolorbox}[colframe=defcolor,title={\color{white}\bf Boolean Satisfiability Problem (SAT)}]
+\begin{definition}
+Let $X=\set{x_1,x_2,\cdots, x_n}$ be a set of propositional variables.
+
+Let $L$ be a set of one or more propositional formulas constructed using only:
+\begin{itemize}
+	\item $x_i\in X$ for $i=1,\dots,n$;
+	\item 
+\end{itemize}
+
+%
+%elements of X
+%the 4
+%unary logical connectives True
+%, False
+%, identity, and ¬
+%the 16
+%binary logical connectives.
+%
+%The problem is to find truth values for all x∈X
+%such that all the formulas in L
+%are true.
+%
+%
+%Such a problem is a boolean satisfiability problem.
+\end{definition}
+\end{tcolorbox}
+
+
+	I present the CDCL algorithm and its implementation based on existing literature. This algorithm is used to solve SAT problems efficiently...
+
+\subsection{SAT solving basics}
+
+The CDCL algorithm is a mix of two older approaches to SAT solving: DPLL and Resolution...
+
+\subsubsection{Backtracking and unit propagation as in DPLL solvers}
+
+When we provide a SAT instance to a DPLL solver it builds up a search tree of assignments...
+
+\subsubsection{Resolution}
+
+If a formula \(F\) contains the clauses \(\{\neg x\} \cup A\) and \(\{x\} \cup A\)...
+
+\section{Principles of CDCL}
+
+Now that we have seen how Backtracking and Resolution work we are ready to merge these approaches...
+
+\subsection{The trail}
+
+When applying CDCL rather than exploring a search tree of assignments...
+
+\subsection{Conflict clauses and backjumping}
+
+Consider our previous example again. When we want to continue building up our trail...
+
+\subsection{The implication graph}
+
+A nice way to illustrate the functionality of CDCL are implication graphs...
+
+\subsection{The algorithm}
+
+To get a clearer view Algorithm 4.1 shows the pseudocode for the CDCL algorithm...
+
+\section{Implementation}
+
+Let us now look at how the algorithm is implemented in real life...
+
+\subsection{Clauses}
+
+We use a monolithic array MEM to hold the original formula’s clauses as well as the newly learned clauses...
+
+\subsection{Literals}
+
+Assume the variables are \(x_1, x_2, \ldots, x_n\). We represent \(x_k\) by \(k\)...
+
+\section{Results}
+
+It is important to say that CDCL is a sound and complete algorithm for the propositional satisfiability problem...

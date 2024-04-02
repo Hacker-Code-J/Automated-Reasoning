@@ -1,7 +1,7 @@
 \iffalse
 \section{Introduction to Automated Theorem Proving}
 Automated Theorem Proving (ATP) is a critical area within automated reasoning that focuses on the development of computer programs capable of proving mathematical theorems automatically. ATP systems are designed to assist mathematicians, logicians, and computer scientists in validating the correctness of propositions and theorems without human intervention.
-\fi
+
 \section{The Boolean Satisfiability Problem}
 \begin{tcolorbox}[colframe=defcolor,title={\color{white}\bf Propositional Variable}]
 \begin{definition}
@@ -39,6 +39,8 @@ The boolean satisfiability problem (SAT) is the following: given a formula $F$ o
 Given a formula $F$ over a set of propositional variables $\set{x_1,x_2,\dots,x_n}$, \[
 \exists\mathcal{A}:\set{x_1,x_2,\dots,x_n}\to\set{0,1}:\mathcal{A}(F)=1.
 \]
+\newpage
+\fi
 
 \begin{tcolorbox}[colframe=defcolor,title={\color{white}\bf Boolean Satisfiability Problem (SAT)}]
 \begin{definition}
@@ -47,7 +49,8 @@ Let $X=\set{x_1,x_2,\cdots, x_n}$ be a set of propositional variables.
 Let $L$ be a set of one or more propositional formulas constructed using only:
 \begin{itemize}
 	\item $x_i\in X$ for $i=1,\dots,n$;
-	\item 
+	\item the 4 unary logical connectives;
+	\item the 16 binary logical connectives;
 \end{itemize}
 
 %

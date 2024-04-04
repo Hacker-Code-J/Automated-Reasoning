@@ -137,12 +137,27 @@ There are 16 distinct unary truth functions:
 	From Count of Truth Functions there are $2^{(2^2)}=16$
 	distinct truth functions on 2 variable. These can be depicted in a truth table as follows:
 	\begin{table}[h!]\centering
-		\begin{tabular}{|c|cccc|}
+		\begin{tabular}{|r|cccc|}
 			\hline
-			$p$ & $\circ_1$ & $\circ_2$ & $\circ_3$ & $\circ_4$ \\
+			$p$ & $\true$ & $\true$ & $\false$ & $\false$ \\
+			$q$ & $\true$ & $\false$ & $\true$ & $\false$ \\
 			\hline
-			$\true$ & $\true$ & $\true$ & $\false$ & $\false$ \\
-			$\false$ & $\false$ & $\true$ & $\false$ & $\false$ \\
+			$f_{\false}(p,q)$ & $\false$ & $\false$ & $\false$ & $\false$ \\
+			$p\downarrow q$ & $\false$ & $\false$ & $\false$ & $\true$ \\
+			$\lnot(p\impliedby q)$ & $\false$ & $\false$ & $\true$ & $\false$ \\
+			$\overline{\mathsf{Proj}_1}(p,q)$ & $\false$ & $\false$ & $\true$ & $\true$ \\
+			$\lnot(p\implies q)$ & $\false$ & $\true$ & $\false$ & $\false$ \\
+			$\overline{\mathsf{Proj}_2}(p,q)$ & $\false$ & $\true$ & $\false$ & $\true$ \\
+			$\lnot(p\iff q)$ & $\false$ & $\true$ & $\true$ & $\false$ \\
+			$p\uparrow q$ & $\false$ & $\true$ & $\true$ & $\true$ \\
+			$p\land q$ & $\true$ & $\false$ & $\false$ & $\false$ \\
+			$p\iff q$ & $\true$ & $\false$ & $\false$ & $\true$ \\
+			$\mathsf{Proj}_2(p,q)$ & $\true$ & $\false$ & $\true$ & $\false$ \\
+			$p\implies q$ & $\true$ & $\false$ & $\true$ & $\true$ \\
+			$\mathsf{Proj}_1(p,q)$ & $\true$ & $\true$ & $\false$ & $\false$ \\
+			$p\impliedby q$ & $\true$ & $\true$ & $\false$ & $\true$ \\
+			$p\lor q$ & $\true$ & $\true$ & $\true$ & $\false$ \\
+			$f_{\true}(p,q)$ & $\true$ & $\true$ & $\true$ & $\true$ \\
 			\hline
 		\end{tabular}
 	\end{table}

@@ -162,3 +162,25 @@ There are 16 distinct unary truth functions:
 		\end{tabular}
 	\end{table}
 \end{proof}
+
+\newpage
+\begin{tcolorbox}[colframe=defcolor,title={\color{white}\bf Formal Grammer}]
+\begin{definition}
+The formal grammar of the language of propositional logic (and hence its WFFs) can be defined in the following ways.
+\begin{itemize}
+	\item \textbf{Backus-Naur Form}
+	In Backus-Naur form, the formal grammar of the language of propositional logic takes the following form:
+	\begin{align*}
+		<\texttt{formula}>\quad &::=\quad p\mid\top\mid\bot &\text{where $p\in\mathcal{P}_0$ is a letter}\\
+		<\texttt{formula}>\quad &::=\quad \lnot<\texttt{formula}>\\
+		<\texttt{formula}>\quad &::=\quad (<\texttt{formula}> <\texttt{op}> <\texttt{formula}>)\\
+		<\texttt{op}>\quad &::=\quad \land\mid\lor\mid\implies\mid\iff
+	\end{align*} Note that this is a top-down grammar:
+we start with a metasymbol <formula>
+progressively replace it with constructs containing other metasymbols and/or primitive symbols
+until finally we are left with a well-formed formula of L0
+consisting of nothing but primitive symbols.
+\end{itemize}
+
+\end{definition}
+\end{tcolorbox}

@@ -42,6 +42,7 @@
 %\newpage
 %\fi
 
+\section{The Boolean Satisfiability Problem}
 \begin{tcolorbox}[colframe=defcolor,title={\color{white}\bf Propositional Function (Formula)}]
 \begin{definition}
 A \textbf{propositional function} (or \textbf{formula}) is defined inductively as follows:
@@ -79,21 +80,65 @@ Such a problem is a boolean satisfiability problem.
 \end{definition}
 \end{tcolorbox}
 
-	I present the CDCL algorithm and its implementation based on existing literature. This algorithm is used to solve SAT problems efficiently...
+\newpage
+
+\begin{note}[literal]
+A \textit{literal} is either a propositional variable ($p$) or its negation ($\lnot p$).
+\end{note}
+
+\begin{tcolorbox}[colframe=defcolor,title={\color{white}\bf Conjunctive Normal Form (CNF)}]
+\begin{definition}
+A formula $F$ is in conjunctive normal form (CNF) if and only if it is a conjunction of disjunctions of literals, i.e. of the form \[
+F=\bigvee_i\bigwedge_jl_{i,j}
+\] where $l_{i,j}$ are the literals.
+\end{definition}
+\end{tcolorbox}
+\begin{remark}
+Usually, CNF formulae are represented in an alternative form called
+clauses using the commutativity, associativity and idempotence of the logical
+operators $\lor$ and $\land$. A clause corresponds to a disjunction of literals and a CNF
+formula is a conjunction of clauses. We write a clause as a set of its literals and
+a formula as a set of clauses. 
+\end{remark}
+
+\begin{example}
+\ \begin{table}[h!]\centering\setstretch{1.5}
+\begin{tabular}{rl}
+	A propositional formula: & $\lnot(((x_0\land\lnot x_1)\lor x_2)\leftrightarrow x_1)$ \\
+	An equivalent formula in CNF: & $(x_0\lor x_1\lor x_2)\land (\lnot x_1\lor \lnot x_2)$ \\
+	In clause representation: & $\set{\set{x_0,x_1,x_2},\set{\lnot x_1,\lnot x_2}}$
+\end{tabular}
+\end{table}\\
+In reality, formulae are often not being transformed into equivalent CNF formulae but into equisatisfiable CNF formulae (formulae which are satisfiable if
+and only if the original formula is satisfiable) when preparing them for SAT,
+because this can be done efficiently.
+\end{example}
 
 \newpage
-\subsection{SAT solving basics}
+\section{Basics of SAT Solving}
 
-The CDCL algorithm is a mix of two older approaches to SAT solving: DPLL and Resolution...
+The Conflict Driven Clause Learning (CDCL) algorithm is a mix of two older approaches to SAT solving: Davis–Putnam–Logemann–Loveland (DPLL) and Resolution. It uses concepts from both and combines them in a new way.
 
-\subsubsection{Backtracking and unit propagation as in DPLL solvers}
+\subsection{Backtracking and Unit Propagation as in DPLL Solvers}
 
-When we provide a SAT instance to a DPLL solver it builds up a search tree of assignments...
+\begin{tikzpicture}
+	[level distance=15mm,
+	every node/.style={circle,draw},
+	level 1/.style={sibling distance=30mm},
+	level 2/.style={sibling distance=15mm}]
+	\node {x0 = 1}
+	child {node {x1 = 1}
+		child {node {x2 = 1}}
+		child {node {x2 = 0}}}
+	child {node {x1 = 0}
+		edge from parent[dashed]};
+\end{tikzpicture}
 
-\subsubsection{Resolution}
+\subsection{Resolution}
 
 If a formula \(F\) contains the clauses \(\{\neg x\} \cup A\) and \(\{x\} \cup A\)...
 
+\newpage
 \section{Principles of CDCL}
 
 Now that we have seen how Backtracking and Resolution work we are ready to merge these approaches...

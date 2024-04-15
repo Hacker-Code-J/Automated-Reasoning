@@ -120,20 +120,26 @@ because this can be done efficiently.
 The Conflict Driven Clause Learning (CDCL) algorithm is a mix of two older approaches to SAT solving: Davis–Putnam–Logemann–Loveland (DPLL) and Resolution. It uses concepts from both and combines them in a new way.
 
 \subsection{Backtracking and Unit Propagation as in DPLL Solvers}
-
-\begin{tikzpicture}
-	[level distance=15mm,
-	every node/.style={circle,draw},
-	level 1/.style={sibling distance=30mm},
-	level 2/.style={sibling distance=15mm}]
-	\node {x0 = 1}
-	child {node {x1 = 1}
-		child {node {x2 = 1}}
-		child {node {x2 = 0}}}
-	child {node {x1 = 0}
-		edge from parent[dashed]};
-\end{tikzpicture}
-
+\begin{example}
+Example graph for $G=\set{\set{\lnot x_0,\lnot x_1,\lnot x_2},\set{\lnot x_0,x_2},\set{x_0,x_1,x_2}}:$
+\begin{center}
+	\begin{tikzpicture}
+		[level distance=15mm,
+		every node/.style={circle,draw},
+		level 1/.style={sibling distance=30mm},
+		level 2/.style={sibling distance=30mm}]
+		\node {$x_0 = 1$}
+		child {node {$x_1 = 1$}
+			child {node {$x_2 = 1$}}
+			child {node {$x_2 = 0$}}}
+		child {node {$x_1 = 0$}
+			edge from parent[dashed]};
+	\end{tikzpicture}
+\end{center}
+The backtracking algorithm has just discovered that setting $x_2 = 0$ makes the
+clause $\set{\lnot x_0 , x_2}$ false. So it goes back to explore the $x_1 = 0$ path and deletes
+the value of $x_2$.
+\end{example}
 \subsection{Resolution}
 
 If a formula \(F\) contains the clauses \(\{\neg x\} \cup A\) and \(\{x\} \cup A\)...
